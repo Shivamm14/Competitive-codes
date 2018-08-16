@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+
+// function to insert string number into int array from right to left;
+void getnum(int a[], char s [])
+{
+     for(int i = 0, j = strlen(s) - 1; i < strlen(s); i ++)
+    {
+        a[i] = s[j--] - '0';
+    }
+}
+// adds number in a and b and stores result in c
+void addnum(int a[], int b[], int c[])
+{
+    int temp = 0;
+    for( int i = 0 ; i  < 200; i ++ )
+    {
+        c[i] = (a[i] + b[i] + temp) % 10;
+        temp = (a[i] + b[i] + temp) / 10;
+        
+    }
+   
+}
+// subtracts b from a and stores in c
+void subnum(int a[], int b[], int c[])
+{
+    int temp = 0;
+    for(int i = 0; i < 200 ; i ++)
+    {
+        c[i] = (a[i] - b[i] - temp);
+        if (c[i] < 0)
+        {
+            c[i] += 10;
+            temp = 1;
+        }
+        else
+            temp = 0;
+    }
+}
+// divides a by n and stores in n
+void divnum(int a[], int n)
+{
+    int flag = 0;
+    int q = 0 , r = 0;
+    for (int i = 199; i >= 0; i--){
+        
+        if (a[i] != 0)
+            flag = 1;
+        if ( flag  == 1)
+        {   q = a[i];
+            a[i] = ((r * 10) + a[i]) / n;
+            r = q % n;
+            
+        }
+    }
+}
